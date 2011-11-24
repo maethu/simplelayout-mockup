@@ -16,8 +16,8 @@
 	height: auto;
 	border: 1px solid #505050;
 	float: left;
-	visibility: hidden;
-}
+/*  visibility: hidden;
+*/}
 
 #sortable {
 	list-style-type: none;
