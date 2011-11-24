@@ -11,15 +11,18 @@
         // Defaults extended by given options
         var settings = $.extend({
             'sortable': '#sortable',
-            'cols': 16, // deco.gs default
+            'relativeto': '.sltable',
+            'columns': 16, // deco.gs default
+            'offset': 0, // amount of cells
             'minWidth': 2, // amount of cells
             'minHeightEm': 2
         }, options);
 
         var $container = this;
+        var $relativeto = $(settings.relativeto);
 
         // Possible grid widths in %, taken from deco.gs
-        var px_widths = [];
+        px_widths = [];
         var GRID_WIDTHS = [
             4,
             10.25,
@@ -48,8 +51,8 @@
         }
 
         function transform_percent_px(){
-            var maxwidth = $($container).width();
-            for(i in GRID_WIDTHS){
+            var maxwidth = $($relativeto).width();
+            for(i in GRID_WIDTHS.slice(0,settings.columns)){
                 px_widths.push(maxwidth/100*GRID_WIDTHS[i]);
             }
         }
@@ -63,8 +66,11 @@
         }
 
         function getGridMaxWidth(){
-            // max width in deco.gs 97.75%, use div#pageholder as reference
-            return $($container).width() * 0.9775;
+            var diff  = 0;
+            if (settings.columns !== 16){
+                diff = GRID_WIDTHS.length - settings.columns;
+                return $($container).width() / 100 * GRID_WIDTHS[GRID_WIDTHS.length -1 - diff];
+            }
         }
 
         function getPositionInParent(element) {
@@ -134,6 +140,7 @@
                         var space = null;
                         //finally set new grid
                         ui.element.resizable("option", "grid", [closest - prev, getGridHeight()]);
+                        console.info(closest);
                         // Just a helper
                         ui.element.find('#boxlabel span.cells').html(" ("+(px_widths.indexOf(closest)+1)+")");
                     },
@@ -161,8 +168,16 @@
             });
 
 
+            //The container to respect the given settings
+            var offsetwidth = $container.width() / 16 * settings.offset;
+            console.info(offsetwidth);
+            var containerwidth = $container.width() / 16 * settings.columns;
+//            var containerwidth = $container.width() / 100 *GRID_WIDTHS[settings.columns-1];
+            $container.css('width',containerwidth).css('left', offsetwidth);
+            // $container.css('width',containerwidth);
+
             goMason();
-            $($container).css('visibility','visible');
+            $container.css('visibility','visible');
             transform_percent_px();
 
         });

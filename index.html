@@ -18,10 +18,12 @@
     <body>
         <h1>Mockup for Simplelayout, based on jquery.masonry, ui.sortable, ui.resizable</h1>
 
-        <b>Firs number indicates the position</b><br>
+        <b>First number indicates the position</b><br>
         <b>Second number indicates the used width</b><br>
-        <b>The red border shows the deco.gs grid</b>
-        <table><tr><td width="960px">
+        <b>The red border shows the deco.gs grid</b><br>
+        <button onClick="javascript:$('#pageHolder').simplelayout();">DEFAULT MASON</button>
+        <button onClick="javascript:$('#pageHolder').simplelayout({'columns':12});">MASON, 12 COLUMNS</button>
+        <table><tr><td class="sltable" width="960px">
         <div id="pageHolder">
             <ul id="sortable">
                 <li class="masonry" style="width: 47.75%; height:2em">
@@ -36,18 +38,17 @@
                 <li class="masonry" style="width: 47.75%; height:10em;">
                     <div class="handler" id="boxlabel" name="4"><span class="position">4</span> <span class="cells">(8)</span></div>
                 </li>
-                <li class="masonry" style="width: 47.75%; height:2em;">
-                    <div class="handler" id="boxlabel" name="5"><span class="position">5</span> <span class="cells">(8)</span></div>
+                <li class="masonry" style="width: 22.75%; height:4em;">
+                    <div class="handler" id="boxlabel" name="5"><span class="position">5</span> <span class="cells">(4)</span></div>
                 </li>
-                <li class="masonry" style="width: 47.75%; height: 2em;">
-
-                    <div class="handler" id="boxlabel" name="6"><span class="position">6</span> <span class="cells">(8)</span></div>
+                <li class="masonry" style="width: 22.75%; height: 4em;">
+                    <div class="handler" id="boxlabel" name="6"><span class="position">6</span> <span class="cells">(4)</span></div>
                 </li>
-                <li class="masonry" style="width: 47.75%; height:2em;">
+                <li class="masonry" style="width: 47.75%; height:4em;">
                     <div class="handler" id="boxlabel" name="7"><span class="position">7</span> <span class="cells">(8)</span></div>
                 </li>
-                <li class="masonry" style="width: 47.75%; height:2em;">
-                    <div class="handler" id="boxlabel" name="8"><span class="position">8</span> <span class="cells">(8)</span></div>
+                <li class="masonry" style="width: 97.75%; height:2em;">
+                    <div class="handler" id="boxlabel" name="8"><span class="position">8</span> <span class="cells">(16)</span></div>
                 </li>
             </ul> 
         </div>

@@ -11,7 +11,7 @@
 }
 #pageHolder {
 	padding: 0px;
-	width: 960px; /*width: 500px;*/
+	width: 100%; /*width: 500px;*/
 	/*max-width: 500px;*/
 	height: auto;
 	border: 1px solid #505050;
