@@ -169,12 +169,18 @@
 
 
             //The container to respect the given settings
-            var offsetwidth = $container.width() / 16 * settings.offset;
-            console.info(offsetwidth);
-            var containerwidth = $container.width() / 16 * settings.columns;
-//            var containerwidth = $container.width() / 100 *GRID_WIDTHS[settings.columns-1];
+            var full_width = $container.width();
+            var offsetwidth = 0;
+            if (settings.offset){
+                var offsetwidth = full_width * GRID_WIDTHS[settings.offset - 1] / 100 + full_width * 0.025;
+                console.info(offsetwidth);
+                // var diffoffset = GRID_WIDTHS[15-settings.columns] - GRID_WIDTHS[settings.offsetwidth -];
+                // console.info(diffoffset);
+                
+            }
+            var containerwidth = full_width - full_width * GRID_WIDTHS[15-settings.columns] / 100 - full_width * 0.025;
             $container.css('width',containerwidth).css('left', offsetwidth);
-            // $container.css('width',containerwidth);
+//             $container.css('width',containerwidth);
 
             goMason();
             $container.css('visibility','visible');
