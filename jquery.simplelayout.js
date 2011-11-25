@@ -68,8 +68,9 @@
             var diff  = 0;
             if (settings.columns !== 16){
                 diff = GRID_WIDTHS.length - settings.columns;
-                return $($container).width() / 100 * GRID_WIDTHS[GRID_WIDTHS.length -1 - diff];
+                return $container.width() / 100 * GRID_WIDTHS[GRID_WIDTHS.length -1 - diff];
             }
+            return $container.width();
         }
 
         function getPositionInParent(element) {
