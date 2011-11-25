@@ -24,23 +24,22 @@
         // Possible grid widths in %, taken from deco.gs
         px_widths = [];
         var GRID_WIDTHS = [
-            4,
-            10.25,
-            16.5,
-            22.75,
-            29,
-            35.25,
-            41.5,
-            47.75,
-            54,
-            60.25,
-            66.5,
-            72.75,
-            79,
-            85.25,
-            91.5,
-            97.75];
-
+            4.16667,
+            10.41667,
+            16.66667,
+            22.91667,
+            29.16667,
+            35.41667,
+            41.66667,
+            47.91667,
+            54.16667,
+            60.41667,
+            66.66667,
+            72.91667,
+            79.16667,
+            85.41667,
+            91.66667,
+            97.91667];
         
         // Helper methods
         function goMason(){
@@ -57,8 +56,8 @@
             }
         }
         function getOneCellWidth(){
-            // As defined in Deco.gs, 1 cells == 4%
-            return $($container).width() * 0.04;
+            // As defined in Deco.gs, 1 cells == 4.16667%
+            return $($container).width() * 0.0416667;
         }
         function getGridHeight(){
             // 1em in px
@@ -172,13 +171,16 @@
             var full_width = $container.width();
             var offsetwidth = 0;
             if (settings.offset){
-                var offsetwidth = full_width * GRID_WIDTHS[settings.offset - 1] / 100 + full_width * 0.025;
+//                var offsetwidth = full_width * GRID_WIDTHS[settings.offset - 1] / 100 + full_width * 0.0208333*2;
+                  offsetwidth = (getOneCellWidth()+full_width*0.0208333) * settings.offset;
                 console.info(offsetwidth);
                 // var diffoffset = GRID_WIDTHS[15-settings.columns] - GRID_WIDTHS[settings.offsetwidth -];
                 // console.info(diffoffset);
                 
             }
-            var containerwidth = full_width - full_width * GRID_WIDTHS[15-settings.columns] / 100 - full_width * 0.025;
+//            var containerwidth = full_width - full_width * GRID_WIDTHS[15-settings.columns] / 100 - full_width * 0.0208333;
+//        console.info(getOneCellWidth())
+            var containerwidth = (getOneCellWidth()+full_width*0.0208333) * settings.columns;
             $container.css('width',containerwidth).css('left', offsetwidth);
 //             $container.css('width',containerwidth);
 
