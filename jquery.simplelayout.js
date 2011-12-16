@@ -11,7 +11,6 @@
         // Defaults extended by given options
         var settings = $.extend({
             'sortable': '#sortable',
-            'relativeto': '.sltable',
             'columns': 16, // deco.gs default
             'offset': 0, // amount of cells
             'minWidth': 2, // amount of cells
@@ -19,7 +18,6 @@
         }, options);
 
         var $container = this;
-        var $relativeto = $(settings.relativeto);
 
         // Possible grid widths in %, taken from deco.gs
         px_widths = [];
@@ -50,7 +48,7 @@
         }
 
         function transform_percent_px(){
-            var maxwidth = $($relativeto).width();
+            maxwidth = $container.width(); //correct table width
             for(i in GRID_WIDTHS.slice(0,settings.columns)){
                 px_widths.push(maxwidth/100*GRID_WIDTHS[i]);
             }
@@ -101,9 +99,7 @@
                         return;
                     }
                 },
-                tolerance: function(currentItem){
-                    return 'pointer';
-                },
+                tolerance: 'pointer',
                 items: 'li',
                 opacity: 0.6,
                 handle: '#boxlabel',
@@ -140,9 +136,10 @@
                         var space = null;
                         //finally set new grid
                         ui.element.resizable("option", "grid", [closest - prev, getGridHeight()]);
-                        console.info(closest);
                         // Just a helper
                         ui.element.find('#boxlabel span.cells').html(" ("+(px_widths.indexOf(closest)+1)+")");
+                        ui.element.css('width', closest);
+                        // ui.helper.css('width', closest);
                     },
                     stop: function(event, ui) {
                         goMason();
@@ -168,6 +165,9 @@
             });
 
 
+            transform_percent_px();
+
+
             //The container to respect the given settings
             var full_width = $container.width();
             var offsetwidth = 0;
@@ -185,9 +185,23 @@
             $container.css('width',containerwidth).css('left', offsetwidth);
 //             $container.css('width',containerwidth);
 
+
+// This only for this demo
+// First align all blocks to grid
+$(settings.sortable).children('li').each(function(){
+$this = $(this);
+var li_width = $this.width();
+var closest = getClosest(px_widths, li_width);
+$this.css('width', closest);
+
+});
+
+
+
+            $(settings.sortable).find('li').css('margin-right',full_width/100*2.08333);
             goMason();
             $container.css('visibility','visible');
-            transform_percent_px();
+            
 
         });
     };

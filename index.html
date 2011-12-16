@@ -24,12 +24,19 @@
         <button onClick="javascript:$('#pageHolder').simplelayout();">DEFAULT MASON</button>
         <button onClick="javascript:$('#pageHolder').simplelayout({'columns':12});">MASON, 12 COLUMNS</button>
         <button onClick="javascript:$('#pageHolder').simplelayout({'columns':8, 'offset':4});">MASON, 8 COLUMNS, 4 LEFT</button>
+        <button onClick="javascript:$('#pageHolder').simplelayout({'columns':8, 'offset':4, 'minWidth':4});">LIKE SIMPLELAYOUT 2 COLUMN BUT BETTER</button>
         
-        <table><tr><td class="sltable" width="960px">
+<div style="width:1200px;">
         <div id="pageHolder">
             <ul id="sortable">
-                <li class="masonry" style="width: 47.91667%; height:2em">
-                    <div class="handler" id="boxlabel" name="1"><span class="position">1</span> <span class="cells">(8)</span></div>
+                <li class="masonry" style="width: 47.91667%; height:8em">
+                    
+                    <div class="handler" id="boxlabel" name="1"><span class="position">1</span> <span class="cells">(8)</span>
+
+                    </div>
+                    
+                    
+                    
                 </li>
                 <li class="masonry" style="width: 47.91667%; height:2em;">
                     <div class="handler" id="boxlabel" name="2"><span class="position">2</span> <span class="cells">(8)</span></div>
@@ -54,7 +61,7 @@
                 </li>
             </ul> 
         </div>
-        <div class="gridoverlay row" style="width:960px;position:absolute;">
+        <div class="gridoverlay row" style="width:1200px;position:absolute;">
             <div class="width-1 cell  position-0"></div>
             <div class="width-1 cell  position-1"></div>
             <div class="width-1 cell  position-2"></div>
@@ -73,5 +80,5 @@
             <div class="width-1 cell  position-15"></div>
             
         </div>
-        </td></tr></table>
+        </div>
 </html>
