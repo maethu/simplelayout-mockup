@@ -136,16 +136,17 @@
                         var space = null;
                         //finally set new grid
                         ui.element.resizable("option", "grid", [closest - prev, getGridHeight()]);
-                        // Just a helper
                         ui.element.find('#boxlabel span.cells').html(" ("+(px_widths.indexOf(closest)+1)+")");
                         ui.element.css('width', closest);
-                        // ui.helper.css('width', closest);
+                        
+                        //ui.element.resizable('option', 'minHeight', ui.element.find('#boxlabel').height());
+
                     },
                     stop: function(event, ui) {
                         goMason();
                         //$('#sortable li[id='+ui.element.attr("id")+']').data('w',ui.element.width());
                         //$('#sortable li[id='+ui.element.attr("id")+']').data('h',ui.element.height());
-                    },                
+                    },
                     minWidth: getOneCellWidth() * settings.minWidth,
                     minHeight: getGridHeight() * settings.minHeightEm,
                     maxWidth: getGridMaxWidth(),
@@ -172,18 +173,14 @@
             var full_width = $container.width();
             var offsetwidth = 0;
             if (settings.offset){
-//                var offsetwidth = full_width * GRID_WIDTHS[settings.offset - 1] / 100 + full_width * 0.0208333*2;
                   offsetwidth = (getOneCellWidth()+full_width*0.0208333) * settings.offset;
                 console.info(offsetwidth);
-                // var diffoffset = GRID_WIDTHS[15-settings.columns] - GRID_WIDTHS[settings.offsetwidth -];
                 // console.info(diffoffset);
                 
             }
-//            var containerwidth = full_width - full_width * GRID_WIDTHS[15-settings.columns] / 100 - full_width * 0.0208333;
-//        console.info(getOneCellWidth())
             var containerwidth = (getOneCellWidth()+full_width*0.0208333) * settings.columns;
             $container.css('width',containerwidth).css('left', offsetwidth);
-//             $container.css('width',containerwidth);
+
 
 
 // This only for this demo
