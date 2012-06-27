@@ -4,10 +4,10 @@
 *********************************************************/
 
 (function($){
-    
+
     $.fn.simplelayout = function(options){
         // "this" is the container where all the magic happens
-        
+
         // Defaults extended by given options
         var settings = $.extend({
             'sortable': '#sortable',
@@ -38,7 +38,7 @@
             85.41667,
             91.66667,
             97.91667];
-        
+
         // Helper methods
         function goMason(){
             $($container).masonry({
@@ -124,10 +124,10 @@
                 }
             }).disableSelection();
 
-            $(settings.sortable).children('li').each(function(){    
+            $(settings.sortable).children('li').each(function(){
                 $(this).resizable({
                     resize: function(event, ui) {
-                        goMason();            
+                        goMason();
                         // Dynimcally change grid - use var px_widths
                         var width = ui.size.width;
                         var closest = getClosest(px_widths, width);
@@ -138,7 +138,7 @@
                         ui.element.resizable("option", "grid", [closest - prev, getGridHeight()]);
                         ui.element.find('#boxlabel span.cells').html(" ("+(px_widths.indexOf(closest)+1)+")");
                         ui.element.css('width', closest);
-                        
+
                         //ui.element.resizable('option', 'minHeight', ui.element.find('#boxlabel').height());
 
                     },
@@ -176,7 +176,7 @@
                   offsetwidth = (getOneCellWidth()+full_width*0.0208333) * settings.offset;
                 console.info(offsetwidth);
                 // console.info(diffoffset);
-                
+
             }
             var containerwidth = (getOneCellWidth()+full_width*0.0208333) * settings.columns;
             $container.css('width',containerwidth).css('left', offsetwidth);
@@ -198,7 +198,7 @@ $this.css('width', closest);
             $(settings.sortable).find('li').css('margin-right',full_width/100*2.08333);
             goMason();
             $container.css('visibility','visible');
-            
+
 
         });
     };
